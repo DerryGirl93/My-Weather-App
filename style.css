@@ -1,0 +1,58 @@
+body {
+  font-family: "Montserrat", sans-serif;
+}
+h1 {
+  color: black;
+  font-weight: 900;
+  font-size: 40px;
+}
+h2 {
+  font-size: 35px;
+}
+
+button {
+  display: block;
+  margin-bottom: 20px;
+}
+p {
+  padding: 5px;
+  font-size: 25px;
+}
+button {
+  transition: all 250ms ease-in-out;
+  border-radius: 5px;
+  background-color: #ff719a;
+  border: solid 2px #ff719a;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+}
+button:hover {
+  background-color: white;
+  color: #ff719a;
+}
+
+.col-sm {
+  text-align: center;
+}
+.card {
+  background-image: linear-gradient(
+    -225deg,
+    #ffe29f 0%,
+    #ffa99f 48%,
+    #ff719a 100%
+  );
+}
+.current-weather {
+  width: 50px;
+  display: block;
+  top: 20px;
+  left: 20px;
+}
+.symbol {
+  width: 50px;
+  display: block;
+  margin: 0 auto;
+}
+
+.weatherDiscription {
+  padding: 0px;
+}
