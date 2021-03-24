@@ -15,6 +15,9 @@ p {
   padding: 5px;
   font-size: 25px;
 }
+p:first-letter {
+  text-transform: capitalize;
+}
 button {
   display: inline;
   margin: 0 auto;
@@ -34,7 +37,10 @@ button:hover {
 strong {
   font-size: 15px;
 }
-
+ul {
+  list-style: none;
+  margin: 0 auto;
+}
 #date {
   font-size: 16px;
 }
