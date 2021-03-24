@@ -73,3 +73,14 @@ let currentLocation = document.querySelector("#currentCity");
 currentLocation.addEventListener("click", getCurrentLocation);
 
 search("London");
+
+//temperature conversion
+function showFahrenheitTemperature(event){
+  event.preventDefault();
+  let temperature = document.querySelector("#temperature");
+  let fahrenheitTemperature = (20 * 9/5) + 32;
+  temperature.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", showFahrenheitTemperature);
