@@ -11,6 +11,9 @@ h1 {
 h2 {
   font-size: 35px;
 }
+a {
+  text-decoration: none;
+}
 p {
   padding: 5px;
   font-size: 25px;
@@ -74,4 +77,13 @@ ul {
 
 p.footer {
   font-size: 14px;
+}
+
+.weatherTemperature .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+}
+
+.weatherTemperature .active:hover {
+  text-decoration: none;
 }

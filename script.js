@@ -47,6 +47,9 @@ function showTemperature(response) {
     iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   ); 
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  celciusTemperature = response.data.main.temp;
+
 }
 
 //Default city
@@ -72,15 +75,33 @@ function getCurrentLocation(event) {
 let currentLocation = document.querySelector("#currentCity");
 currentLocation.addEventListener("click", getCurrentLocation);
 
-search("London");
 
 //temperature conversion
 function showFahrenheitTemperature(event){
   event.preventDefault();
   let temperature = document.querySelector("#temperature");
-  let fahrenheitTemperature = (20 * 9/5) + 32;
+  let fahrenheitTemperature = (celciusTemperature * 9/5) + 32;
   temperature.innerHTML = Math.round(fahrenheitTemperature);
+
+  celcius.classList.remove("active");
+  fahrenheit.classList.add("active");
 }
+
+function showCelciusTemperature(event){
+  event.preventDefault();
+  let temperature = document.querySelector("#temperature");
+  temperature.innerHTML = Math.round(celciusTemperature);
+
+  celcius.classList.add("active");
+  fahrenheit.classList.remove("active");
+}
+
+let celciusTemperature = null;
 
 let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", showFahrenheitTemperature);
+
+let celcius = document.querySelector("#celcius");
+celcius.addEventListener("click", showCelciusTemperature);
+
+search("London");
