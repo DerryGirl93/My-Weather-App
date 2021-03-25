@@ -54,6 +54,10 @@ function showTemperature(response) {
 
   celciusTemperature = response.data.main.temp;
   date.innerHTML = formatDate(response.data.dt * 1000);
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
 //forecast
