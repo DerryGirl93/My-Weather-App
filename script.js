@@ -1,6 +1,6 @@
 // current Date & Time
-let now = new Date();
-
+function formatDate(timestamp){
+let now = new Date(timestamp);
 let days = [
   "Sunday",
   "Monday",
@@ -11,19 +11,23 @@ let days = [
   "Saturday"
 ];
 let currentDay = days[now.getDay()];
-let hour = now.getHours();
+return `${currentDay} ${formatHours(timestamp)}`;
+}
+
+// format forecast time
+function formatHours(timestamp){
+let date = new Date(timestamp);
+let hour = date.getHours();
 if (hour < 10) {
   hour = `0${hour}`;
 }
-
-let min = now.getMinutes();
+let min = date.getMinutes();
 if (min < 10) {
   min = `0${min}`;
 }
 
-let h2 = document.querySelector("#date");
-
-h2.innerHTML = `${currentDay} ${hour}:${min}`;
+return `${hour}:${min}`
+}
 
 //Search engine Function
 function handleSearch(event) {
@@ -49,7 +53,30 @@ function showTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
   celciusTemperature = response.data.main.temp;
+  date.innerHTML = formatDate(response.data.dt * 1000);
+}
 
+//forecast
+function displayForecast(response){
+let forecastElement = document.querySelector("#forecast");
+forecastElement.innerHTML = null;
+  let forecast = null;
+
+ for (let index = 0; index < 6; index++) {
+   forecast = response.data.list[index];
+   forecastElement.innerHTML += `
+<div class="col-2">
+  <p>
+  <strong>${formatHours(forecast.dt * 1000)}</strong> <br />
+  <span> Min ${Math.round(forecast.main.temp_max)}</span>°C | <span>Max ${Math.round(forecast.main.temp_min)}</span>°C <br />
+  </p>
+  <img
+   src="http://openweathermap.org/img/wn/${
+    forecast.weather[0].icon
+    }@2x.png"
+    />
+</div>`
+ }
 }
 
 //Default city
@@ -57,10 +84,12 @@ function search(city) {
   let apiKey = "00579ce2b45dcca0b61cea4da9a1d794";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
+
+  apiUrl= `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 //Current Location
-
 function searchLocation(position) {
   let apiKey = "00579ce2b45dcca0b61cea4da9a1d794";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
