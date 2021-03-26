@@ -72,7 +72,7 @@ forecastElement.innerHTML = null;
 <div class="col-2">
   <p>
   <strong>${formatHours(forecast.dt * 1000)}</strong> <br />
-  <span> Min ${Math.round(forecast.main.temp_max)}</span>°C | <span>Max ${Math.round(forecast.main.temp_min)}</span>°C <br />
+  <span class="forecast"> ${Math.round(forecast.main.temp_max)}°C |</span> <span class="forecast"><strong> ${Math.round(forecast.main.temp_min)}°C</strong></span >
   </p>
   <img
    src="http://openweathermap.org/img/wn/${
