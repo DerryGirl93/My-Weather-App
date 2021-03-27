@@ -74,7 +74,7 @@ forecastElement.innerHTML = null;
   <strong>${formatHours(forecast.dt * 1000)}</strong> <br />
   <span class="forecast"> ${Math.round(forecast.main.temp_max)}°C |</span> <span class="forecast"><strong> ${Math.round(forecast.main.temp_min)}°C</strong></span >
   </p>
-  <img
+  <img class="icon"
    src="http://openweathermap.org/img/wn/${
     forecast.weather[0].icon
     }@2x.png"
